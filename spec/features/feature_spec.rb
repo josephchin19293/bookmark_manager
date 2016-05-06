@@ -45,9 +45,11 @@ feature 'create new links' do
     visit '/links'
     click_button 'add new link'
     expect(current_path).to eq '/links/new'
-    fill_in 'tag', with: "Search"
+    fill_in 'title', with: "google"
+    fill_in 'url', with: "google.com"
+    fill_in 'tag', with: "Search, Cool, nice"
     click_button 'submit'
     expect(current_path).to eq '/links'
-    expect(page).to have_content "[\"Search\"]"
+    expect(page).to have_content "[\"Search\", \"Cool\", \"nice\"]"
   end
 end
